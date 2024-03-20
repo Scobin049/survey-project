@@ -9,8 +9,8 @@ export const IconText = styled.Text`
   color: #ef3054;
   font-weight: bold;
 `;
-export const Box = styled.View`
-  border-color: #d8ddde;
+export const Box = styled.TouchableOpacity`
+  border-color: #637081;
   border-width: 1px;
   border-radius: 8px;
   margin: 4px 0;
@@ -19,10 +19,10 @@ export const Box = styled.View`
   justify-content: space-between;
 `;
 
-type ItemProps = {title: string};
+type ItemProps = {title: string; onPress: any};
 
-const SurveyItem = ({title}: ItemProps) => (
-  <Box>
+const SurveyItem = ({title, onPress}: ItemProps) => (
+  <Box onPress={onPress}>
     <Title>{title}</Title>
     <IconText>{'>'}</IconText>
   </Box>

@@ -1,10 +1,10 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text} from 'react-native';
 import SurveyItem from '../../components/SurveyItem';
 import TitlePage from '../../components/TitlePage';
-import {Container} from './styles';
+import {Container, GoBackButton} from './styles';
 
-function SurveyListScreen(): React.JSX.Element {
+function SurveyListScreen({navigation}: any): React.JSX.Element {
   const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -22,11 +22,27 @@ function SurveyListScreen(): React.JSX.Element {
 
   return (
     <Container>
-      <TitlePage>Responda pesquisas</TitlePage>
+      <GoBackButton
+        onPress={() => {
+          navigation.goBack();
+        }}>
+        <Text style={{fontSize: 22}}>{'<'}</Text>
+      </GoBackButton>
+      <TitlePage>Pesquisas para responder</TitlePage>
 
       <FlatList
         data={DATA}
-        renderItem={({item}) => <SurveyItem title={item.title} />}
+        renderItem={({item}) => (
+          <SurveyItem
+            title={item.title}
+            onPress={() => {
+              navigation.navigate('SurveyResponse', {
+                id: item.id,
+                name: item.title,
+              });
+            }}
+          />
+        )}
         keyExtractor={item => item.id}
       />
     </Container>

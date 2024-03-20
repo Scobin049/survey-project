@@ -9,6 +9,7 @@ import InitialScreen from './pages/InitialScreen';
 import LoginScreen from './pages/LoginScreen';
 import SurveyDashboardScreen from './pages/SurveyDashboardScreen';
 import SurveyListScreen from './pages/SurveyListScreen';
+import SurveyResponseScreen from './pages/SurveyResponseScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,10 @@ function App(): React.JSX.Element {
             component={SurveyDashboardScreen}
           />
           <Stack.Screen name="SurveyList" component={SurveyListScreen} />
+          <Stack.Screen
+            name="SurveyResponse"
+            component={SurveyResponseScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       <Text style={{textAlign: 'center', fontSize: 10}}>
