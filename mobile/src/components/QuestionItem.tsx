@@ -1,10 +1,10 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Text} from 'react-native';
 import styled from 'styled-components/native';
+import palette from '../assets/images/palette';
 
 const Box = styled.View`
-  border-color: #637081;
+  border-color: ${palette.gray};
   border-width: 1px;
   border-radius: 8px;
   margin: 8px 0;
@@ -18,7 +18,7 @@ const Description = styled.Text`
 const DescriptionRequired = styled.Text`
   font-weight: bold;
   font-size: 16px;
-  color: #ef3054;
+  color: ${palette.primary};
 `;
 
 const OptionButton = styled.TouchableOpacity`
@@ -50,7 +50,9 @@ const QuestionItem = ({item, handleOptionSelect}: any) => {
           <OptionView
             style={{
               backgroundColor:
-                item.selectedOption === option.id ? '#ef3054' : '#637081',
+                item.selectedOption === option.id
+                  ? palette.primary
+                  : palette.gray,
             }}
           />
           <Text>{option.value}</Text>

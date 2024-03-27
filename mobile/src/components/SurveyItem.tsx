@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import palette from '../assets/images/palette';
 
 export const Title = styled.Text`
   font-size: 18px;
 `;
 export const IconText = styled.Text`
   font-size: 22px;
-  color: #ef3054;
+  color: ${palette.primary};
   font-weight: bold;
 `;
 export const Box = styled.TouchableOpacity`
-  border-color: #637081;
+  border-color: ${palette.gray};
   border-width: 1px;
   border-radius: 8px;
   margin: 4px 0;
