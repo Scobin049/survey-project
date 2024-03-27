@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "setDevelopment": "set ENVFILE=.env.dev",
+    "setStaging": "set ENVFILE=.env.stage",
+    "setProduction": "set ENVFILE=.env.prod",
+    "android:dev": "npm run setDevelopment && react-native run-android --mode=devDebug --appIdSuffix=dev",
+    "android:stage": "npm run setStaging && react-native run-android --mode=stageDebug --appIdSuffix=stage",
+    "android:prod": "npm run setProduction && react-native run-android --mode=prodDebug --appIdSuffix=prod",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",

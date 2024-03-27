@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Config from 'react-native-config';
 
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   const client = new ApolloClient({
-    uri: 'http://192.168.137.1:4000',
+    uri: Config.BASE_URL,
     cache: new InMemoryCache(),
   });
 
