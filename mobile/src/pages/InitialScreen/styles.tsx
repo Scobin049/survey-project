@@ -1,13 +1,14 @@
 import {Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 import initialbackground from '../../assets/images/initial-background.png';
+import palette from '../../assets/images/palette';
 
 const height = Dimensions.get('window').height;
 
 export const Container = styled.SafeAreaView`
   flex: 1;
   justify-content: 'space-between';
-  background-color: #fff;
+  background-color: ${palette.white};
 `;
 
 export const ContainerSurveys = styled.ScrollView`
@@ -22,7 +23,7 @@ export const ContainerLogin = styled.View`
 export const ButtonAdmin = styled.TouchableOpacity`
   padding: 8px;
   background-color: transparent;
-  border-color: #d8ddde;
+  border-color: ${palette.lightGray};
   border-width: 1px;
   border-radius: 4px;
   align-items: center;
@@ -30,22 +31,25 @@ export const ButtonAdmin = styled.TouchableOpacity`
 `;
 
 export const ButtonAdminText = styled.Text`
-  color: #637081;
+  color: ${palette.gray};
   font-size: 12px;
   text-transform: uppercase;
 `;
 
 export const ButtonSurveys = styled.TouchableOpacity`
-  background-color: #ef3054;
+  background-color: ${palette.primary};
   padding: 16px;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 `;
 
 export const ButtonSurveysText = styled.Text`
-  color: #fff;
-  font-size: 16px;
+  color: ${palette.white};
+  font-size: 18px;
+  margin-right: 16px;
+  font-weight: bold;
 `;
 
 export const ImageSurvey = styled.Image.attrs({

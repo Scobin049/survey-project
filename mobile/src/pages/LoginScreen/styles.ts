@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
+import palette from '../../assets/images/palette';
 
 export const Container = styled.SafeAreaView`
-  background-color: #fff;
+  background-color: ${palette.white};
   flex: 1;
   padding: 8px 16px;
   padding-top: 32px;
@@ -9,7 +10,7 @@ export const Container = styled.SafeAreaView`
 
 export const InputLogin = styled.TextInput`
   border-width: 1px;
-  border-color: #d8ddde;
+  border-color: ${palette.lightGray};
   margin: 8px 0;
   padding: 8px;
 `;
@@ -20,7 +21,7 @@ export const TitleLogin = styled.Text`
 `;
 
 export const ButtonLogin = styled.TouchableOpacity`
-  background-color: #ef3054;
+  background-color: ${palette.primary};
   padding: 16px;
   border-radius: 8px;
   align-items: center;
@@ -28,6 +29,6 @@ export const ButtonLogin = styled.TouchableOpacity`
 `;
 
 export const ButtonLoginText = styled.Text`
-  color: #fff;
+  color: ${palette.white};
   font-size: 16px;
 `;

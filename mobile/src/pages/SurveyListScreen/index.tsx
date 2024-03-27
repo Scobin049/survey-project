@@ -1,37 +1,61 @@
+import {useQuery} from '@apollo/client';
 import React from 'react';
 import {FlatList, Text} from 'react-native';
+
+import HeaderPage from '../../components/HeaderPage';
 import SurveyItem from '../../components/SurveyItem';
-import TitlePage from '../../components/TitlePage';
-import {Container, GoBackButton} from './styles';
+import {GET_SURVEYS} from '../../data/queries.grahpql';
+import {Container, ContainerNoData} from './styles';
 
-function SurveyListScreen({navigation}: any): React.JSX.Element {
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-  ];
-
+function DefaultContainer({
+  children,
+  navigation,
+}: {
+  children: any;
+  navigation: any;
+}): React.JSX.Element {
   return (
     <Container>
-      <GoBackButton
-        onPress={() => {
-          navigation.goBack();
-        }}>
-        <Text style={{fontSize: 22}}>{'<'}</Text>
-      </GoBackButton>
-      <TitlePage>Pesquisas para responder</TitlePage>
+      <HeaderPage
+        title="Pesquisas para responder"
+        handleBack={navigation.goBack}
+      />
 
+      {children}
+    </Container>
+  );
+}
+
+function SurveyListScreen({navigation}: any): React.JSX.Element {
+  const {loading, error, data} = useQuery(GET_SURVEYS, {
+    variables: {status: true},
+  });
+
+  if (loading) {
+    return (
+      <DefaultContainer navigation={navigation}>
+        <ContainerNoData>
+          <Text>Loading...</Text>
+        </ContainerNoData>
+      </DefaultContainer>
+    );
+  }
+  if (error) {
+    return (
+      <DefaultContainer navigation={navigation}>
+        <ContainerNoData>
+          <Text>Error! {error.message}</Text>
+        </ContainerNoData>
+      </DefaultContainer>
+    );
+  }
+
+  console.log('data', JSON.stringify(data, null, 2));
+
+  return (
+    <DefaultContainer navigation={navigation}>
       <FlatList
-        data={DATA}
+        data={data.surveys}
         renderItem={({item}) => (
           <SurveyItem
             title={item.title}
@@ -45,7 +69,7 @@ function SurveyListScreen({navigation}: any): React.JSX.Element {
         )}
         keyExtractor={item => item.id}
       />
-    </Container>
+    </DefaultContainer>
   );
 }
 

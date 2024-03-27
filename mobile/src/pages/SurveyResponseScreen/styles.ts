@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
+import palette from '../../assets/images/palette';
 
 export const Container = styled.ScrollView`
   flex: 1;
-  background-color: #fff;
+  background-color: ${palette.white};
   padding: 8px 16px;
 `;
 
 export const ButtonSurveys = styled.TouchableOpacity`
-  background-color: #ef3054;
+  background-color: ${palette.primary};
   padding: 16px;
   border-radius: 8px;
   align-items: center;
@@ -16,6 +17,6 @@ export const ButtonSurveys = styled.TouchableOpacity`
 `;
 
 export const ButtonSurveysText = styled.Text`
-  color: #fff;
+  color: ${palette.white};
   font-size: 16px;
 `;
