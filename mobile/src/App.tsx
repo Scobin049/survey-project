@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Config from 'react-native-config';
 
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,6 +17,7 @@ import SurveyResponseScreen from './pages/SurveyResponseScreen';
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
+  console.log('Config.ENVIRONMENT_NAME', Config.ENVIRONMENT_NAME);
   const client = new ApolloClient({
     uri: 'http://192.168.137.1:4000',
     cache: new InMemoryCache(),
